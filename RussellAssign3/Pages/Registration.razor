@@ -1,0 +1,129 @@
+﻿@page "/registration"
+@using RussellAssign3.Data
+<h3>Registration</h3>
+
+<EditForm Model="@p" OnValidSubmit="insertRegistration">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <ValidationSummary></ValidationSummary>
+
+    <table>
+        <tr>
+            <td>User ID</td>
+            <td>:</td>
+            <td><InputText id="userid" @bind-Value="p.userid"></InputText></td>
+
+        </tr>
+
+        <tr>
+            <td>Password</td>
+            <td>:</td>
+            <td><InputText id="password" @bind-Value="p.password"></InputText></td>
+
+        </tr>
+
+        <tr>
+            <td>Name</td>
+            <td>:</td>
+            <td><InputText id="name" @bind-Value="p.name"></InputText></td>
+
+        </tr>
+
+        <tr>
+            <td>Address</td>
+            <td>:</td>
+            <td><InputText id="address" @bind-Value="p.address"></InputText></td>
+
+        </tr>
+
+        <tr>
+            <td>Country</td>
+            <td>:</td>
+            <td>
+                <InputSelect id="country" @bind-Value="p.country">
+                    <option value="">Select Country ...</option>
+                    <option value="America">America</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Mexico">Mexico</option>
+                    <option value="United Kingdom">United Kingdom</option>
+
+                </InputSelect>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Zipcode</td>
+            <td>:</td>
+            <td><InputNumber id="zipcode" @bind-Value="p.zipcode"></InputNumber></td>
+
+        </tr>
+
+        <tr>
+            <td>Email</td>
+            <td>:</td>
+            <td><InputText id="email" @bind-Value="p.email"></InputText></td>
+
+        </tr>
+        <tr>
+            <td>Sex</td>
+            <td>:</td>
+            <td>
+                <InputRadioGroup id="sex" @bind-Value="p.sex">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </InputRadioGroup>
+            </td>
+
+        </tr>
+        <tr>
+            <td>Language</td>
+            <td>:</td>
+            <td>English<InputCheckbox id="lang" @bind-Value="p.lang"></InputCheckbox></td>
+            <td>Non English<InputCheckbox id="lang" @bind-Value="p.lang"></InputCheckbox></td>
+        </tr>
+
+        <tr>
+            <td>About</td>
+            <td>:</td>
+            <td><InputText id="about" @bind-Value="p.about"></InputText></td>
+
+        </tr>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td><button type="submit">Submit</button></td>
+
+        </tr>
+
+    </table>
+
+
+    <p>@message</p>
+
+</EditForm>
+
+
+@code {
+
+    private string message = "";
+
+    private Form_info p = new Form_info();
+    
+
+    public async Task insertRegistration()
+    {
+        message = "Following information entered: ";
+        message += "\nUser ID: " + p.userid;
+        message += "\nPassword: " + p.password;
+        message += "\nName: " + p.name;
+        message += "\nAddress: " + p.address;
+        message += "\nCountry: " + p.country;
+        message += "\nZipcode: " + p.zipcode;
+        message += "\nEmail: " + p.email;
+        message += "\nSex: " + p.sex;
+        message += "\nLanguage: " + p.lang;
+        message += "\nAbout: " + p.about;
+
+    }
+
+}
